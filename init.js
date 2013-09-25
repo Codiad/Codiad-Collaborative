@@ -12,7 +12,7 @@
         curpath = path.split('/').slice(0, -1).join('/')+'/';
 
     /* FIXME Dynamically load diff match patch lib. Is there any better way? */
-    $.getScript(curpath + '/lib/diff_match_patch.js');
+    $.getScript('lib/diff_match_patch.js');
 
     var codiad = global.codiad;
 

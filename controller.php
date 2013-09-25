@@ -21,8 +21,8 @@
      */
 
     require_once('../../common.php');
-    require_once('lib/diff_match_patch.php');
-    require_once('lib/file_db.php');
+    require_once('../../lib/diff_match_patch.php');
+    require_once('file_db.php');
 
     //////////////////////////////////////////////////////////////////
     // Verify Session or Key
