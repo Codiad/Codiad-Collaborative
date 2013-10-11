@@ -20,7 +20,7 @@
         if (typeof(codiad.collaborative) == 'undefined') {
           codiad.collab.init();
         } else {
-          codiad.modal.load(400, curpath+"dialog.php");
+          codiad.modal.load(400, curpath+"dialog.php?action=warn");
         }
     });
 
