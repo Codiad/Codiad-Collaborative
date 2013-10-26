@@ -17,7 +17,11 @@
     var codiad = global.codiad;
 
     $(function () {
-        codiad.collaborative.init();
+        if (typeof(codiad.collaborative) == 'undefined') {
+          codiad.collab.init();
+        } else {
+          codiad.modal.load(400, curpath+"dialog.php?action=warn");
+        }
     });
 
     //////////////////////////////////////////////////////////////////
@@ -29,7 +33,7 @@
     //
     //////////////////////////////////////////////////////////////////
 
-    codiad.collaborative = {
+    codiad.collab = {
 
         controller: curpath + 'controller.php',
 
