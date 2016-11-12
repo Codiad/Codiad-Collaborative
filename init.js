@@ -556,15 +556,8 @@
 
                 case "+":
                     /* Some characters were added. */
-                    aceDelta = {
-                        action: "insertText",
-                        range: {
-                            start: {row: (row - 1), column: (col - 1)},
-                            end: {row: (row - 1), column: (col - 1)}
-                        },
-                        text: data
-                    };
-                    aceDeltas.push(aceDelta);
+                    var startRow = row;
+                    var startCol = col;
 
                     var innerRows = data.split("\n");
                     var innerRowsCount = innerRows.length - 1;
@@ -574,6 +567,14 @@
                     } else {
                         col = innerRows[innerRowsCount].length + 1;
                     }
+
+                    aceDelta = {
+                        action: "insert",
+                        start: {row: (startRow - 1), column: (startCol - 1)},
+                        end: {row: (row - 1), column: (col - 1)},
+                        lines: innerRows
+                    };
+                    aceDeltas.push(aceDelta);
                     break;
 
                 case "-":
@@ -593,12 +594,10 @@
                     }
 
                     aceDelta = {
-                        action: "removeText",
-                        range: {
-                            start: {row: (row - 1), column: (col - 1)},
-                            end: {row: (endRow - 1), column: (endCol - 1)}
-                        },
-                        text: data
+                        action: "remove",
+                        start: {row: (row - 1), column: (col - 1)},
+                        end: {row: (endRow - 1), column: (endCol - 1)},
+                        lines: removedRows
                     };
                     aceDeltas.push(aceDelta);
 
